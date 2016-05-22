@@ -1,1 +1,1 @@
-# bitbar_trello
+# bitbar_trelloスクリプトの結果をメニューバーに表示する[bitbar](https://github.com/matryer/bitbar)で、Trelloのタスクを表示するために利用する## Get Started1. Get key and token [here](https://trello.com/1/appKey/generate)2. Create config.ini```[trello]user = ****key = *****token = *****```
