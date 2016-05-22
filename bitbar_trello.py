@@ -21,4 +21,4 @@ def get_config(path):
 
 
 if __name__ == u"__main__":
-    pass
+    config = get_config(CONFIG)
