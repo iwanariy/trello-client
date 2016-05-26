@@ -4,7 +4,6 @@
 
 CONFIG = "../config.ini"
 base_url = "https://api.trello.com/1"
-key_token = "key={0}&token={1}"
 
 import configparser
 import sys
@@ -19,6 +18,13 @@ class TrelloClient(object):
         self.key = key
         self.token = token
 
+    def get_json(self, api):
+        """ Get json by using uri """
+        uri = base_url + api + "?" + "key={0}&token={1}".format(self.key, self.token)
+        r = requests.get(uri)
+
+        return r.json()
+
 
 def get_config(path):
     """ Get config object """
@@ -32,19 +38,11 @@ def get_config(path):
         sys.exit(1)
 
 
-def get_json(api, key, token):
-    """ Get json by using uri """
-    uri = base_url + api + "?" + key_token.format(key, token)
-    r = requests.get(uri)
-
-    return r.json()
-
-
-def get_boards(username, key, token):
+def get_boards(username, client):
     """ Get hash of board name and id """
     boards = {}
 
-    json_obj = get_json("/members/{0}/boards".format(username), key, token)
+    json_obj = client.get_json("/members/{0}/boards".format(username))
 
     for record in json_obj:
         id = record["id"]
@@ -60,4 +58,6 @@ if __name__ == u"__main__":
     key = config.get("trello", "key")
     token = config.get("trello", "token")
 
-    get_boards(username, key, token)
+    client = TrelloClient(key, token)
+
+    get_boards(username, client)
