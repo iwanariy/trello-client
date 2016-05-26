@@ -7,6 +7,7 @@ base_url = "https://api.trello.com/1"
 
 import requests
 import util
+from board import Board
 
 
 class TrelloClient(object):
@@ -47,4 +48,10 @@ if __name__ == u"__main__":
 
     client = TrelloClient(key, token)
 
-    get_boards(username, client)
+    boards = get_boards(username, client)
+
+    board_id = boards["Private"]
+    print(board_id)
+
+    board = Board(board_id, client)
+    board.fetch()
