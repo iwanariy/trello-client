@@ -24,9 +24,9 @@ def get_config(path):
         sys.exit(1)
 
 
-def get_board_hash(username, key, token):
+def get_boards(username, key, token):
     """ Get hash of board name and id """
-    board_hash = {}
+    boards = {}
 
     # Get json
     url = base_url + api_members.format(username) + "?" + key_token.format(key, token) + "&fields=name"
@@ -35,9 +35,9 @@ def get_board_hash(username, key, token):
     for record in r.json():
         id = record["id"]
         name = record["name"]
-        board_hash[name] = id
+        boards[name] = id
 
-    return board_hash
+    return boards
 
 
 if __name__ == u"__main__":
@@ -46,4 +46,4 @@ if __name__ == u"__main__":
     key = config.get("trello", "key")
     token = config.get("trello", "token")
 
-    get_board_hash(username, key, token)
+    get_boards(username, key, token)
