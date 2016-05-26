@@ -11,6 +11,15 @@ import sys
 import requests
 
 
+class TrelloClient(object):
+    """
+    Class for connection to trello
+    """
+    def __init__(self, key, token):
+        self.key = key
+        self.token = token
+
+
 def get_config(path):
     """ Get config object """
     config = configparser.ConfigParser()
