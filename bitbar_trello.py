@@ -24,5 +24,21 @@ def get_config(path):
         sys.exit(1)
 
 
+def get_board_hash(username, key, token):
+    """ Get hash of board name and id """
+    board_hash = {}
+
+    # Get json
+    url = base_url + api_members.format(username) + "?" + key_token.format(key, token) + "&fields=name"
+    r = requests.get(url)
+
+    for record in r.json():
+        id = record["id"]
+        name = record["name"]
+        board_hash[name] = id
+
+    return board_hash
+
+
 if __name__ == u"__main__":
     config = get_config(CONFIG)
