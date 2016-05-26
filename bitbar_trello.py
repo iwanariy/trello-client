@@ -9,6 +9,7 @@ key_token = "key={0}&token={1}"
 
 import configparser
 import sys
+import requests
 
 
 def get_config(path):
