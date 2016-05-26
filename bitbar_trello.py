@@ -3,6 +3,9 @@
 
 
 CONFIG = "./config.ini"
+base_url = "https://api.trello.com"
+api_members = "/1/members/{0}/boards"
+key_token = "key={0}&token={1}"
 
 import configparser
 import sys
