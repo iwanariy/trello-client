@@ -42,3 +42,8 @@ def get_board_hash(username, key, token):
 
 if __name__ == u"__main__":
     config = get_config(CONFIG)
+    username = config.get("trello", "username")
+    key = config.get("trello", "key")
+    token = config.get("trello", "token")
+
+    get_board_hash(username, key, token)
