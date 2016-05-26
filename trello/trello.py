@@ -5,9 +5,8 @@
 CONFIG = "../config.ini"
 base_url = "https://api.trello.com/1"
 
-import configparser
-import sys
 import requests
+import util
 
 
 class TrelloClient(object):
@@ -26,18 +25,6 @@ class TrelloClient(object):
         return r.json()
 
 
-def get_config(path):
-    """ Get config object """
-    config = configparser.ConfigParser()
-
-    try:
-        config.read(path)
-        return config
-    except Exception as e:
-        print(e)
-        sys.exit(1)
-
-
 def get_boards(username, client):
     """ Get hash of board name and id """
     boards = {}
@@ -53,7 +40,7 @@ def get_boards(username, client):
 
 
 if __name__ == u"__main__":
-    config = get_config(CONFIG)
+    config = util.get_config(CONFIG)
     username = config.get("trello", "username")
     key = config.get("trello", "key")
     token = config.get("trello", "token")
