@@ -6,8 +6,6 @@ CONFIG = "../config.ini"
 base_url = "https://api.trello.com/1"
 
 import requests
-import util
-from board import Board
 
 
 class TrelloClient(object):
@@ -41,17 +39,4 @@ def get_boards(username, client):
 
 
 if __name__ == u"__main__":
-    config = util.get_config(CONFIG)
-    username = config.get("trello", "username")
-    key = config.get("trello", "key")
-    token = config.get("trello", "token")
-
-    client = TrelloClient(key, token)
-
-    boards = get_boards(username, client)
-
-    board_id = boards["Private"]
-    print(board_id)
-
-    board = Board(board_id, client)
-    board.fetch()
+    pass
