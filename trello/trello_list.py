@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 
 
+from trello.card import Card
+
+
 class List(object):
     """
     Class List in trello
@@ -22,3 +25,14 @@ class List(object):
 
     def __repr__(self):
         return self.name
+
+    def get_cards(self):
+        """ Get all cards for this list """
+        json_obj = self.client.get_json("/lists/" + self.id + "/cards")
+        print(json_obj)
+
+        cards = []
+        for obj in json_obj:
+            cards.append(Card(self.client, obj["id"]))
+
+        return cards
