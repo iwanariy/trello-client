@@ -7,9 +7,10 @@ class List(object):
     Class List in trello
     """
 
-    def __init__(self, list_id, client):
+    def __init__(self, client, list_id, name=""):
         self.id = list_id
         self.client = client
+        self.name = name
 
     def fetch(self):
         """ Fetch all attributes """
