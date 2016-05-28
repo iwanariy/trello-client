@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 
-CONFIG = "../config.ini"
 base_url = "https://api.trello.com/1"
 
 import requests
