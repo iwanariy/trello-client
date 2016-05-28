@@ -93,5 +93,5 @@ ENV/
 .ropeproject
 
 # Original
-config.ini
+config.cfg
 sample.py
