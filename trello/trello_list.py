@@ -19,3 +19,6 @@ class List(object):
         self.name = json_obj["name"]
         self.closed = json_obj["closed"]
         self.pos = json_obj["pos"]
+
+    def __repr__(self):
+        return self.name
