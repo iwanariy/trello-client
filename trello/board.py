@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from trello.trello_list import List
+
 
 class Board(object):
     """
@@ -16,3 +18,13 @@ class Board(object):
         json_obj = self.client.get_json("/boards/" + self.id)
 
         self.name = json_obj["name"]
+
+    def get_lists(self):
+        """ Get card lists of this board """
+        json_obj = self.client.get_json("/boards/" + self.id + "/lists")
+
+        lists = []
+        for obj in json_obj:
+            lists.append(List(obj["id"], self.client))
+
+        return lists
