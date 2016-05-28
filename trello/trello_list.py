@@ -29,7 +29,6 @@ class List(object):
     def get_cards(self):
         """ Get all cards for this list """
         json_obj = self.client.get_json("/lists/" + self.id + "/cards")
-        print(json_obj)
 
         cards = []
         for obj in json_obj:
