@@ -16,3 +16,5 @@ class List(object):
         json_obj = self.client.get_json("/lists/" + self.id)
 
         self.name = json_obj["name"]
+        self.closed = json_obj["closed"]
+        self.pos = json_obj["pos"]
