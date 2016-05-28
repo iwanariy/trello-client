@@ -13,6 +13,9 @@ class Card(object):
         self.client = client
         self.name = name
 
+    def __repr__(self):
+        return self.name
+
     def fetch(self):
         """ Fetch all attributes """
         json_obj = self.client.get_json("/cards/" + self.id)

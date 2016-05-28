@@ -13,6 +13,9 @@ class Board(object):
         self.id = board_id
         self.client = client
 
+    def __repr__(self):
+        return self.name
+
     def fetch(self):
         """ Fetch all attributes """
         json_obj = self.client.get_json("/boards/" + self.id)
