@@ -15,6 +15,9 @@ class List(object):
         self.client = client
         self.name = name
 
+    def __repr__(self):
+        return self.name
+
     def fetch(self):
         """ Fetch all attributes """
         json_obj = self.client.get_json("/lists/" + self.id)
@@ -22,9 +25,6 @@ class List(object):
         self.name = json_obj["name"]
         self.closed = json_obj["closed"]
         self.pos = json_obj["pos"]
-
-    def __repr__(self):
-        return self.name
 
     def get_cards(self):
         """ Get all cards for this list """
