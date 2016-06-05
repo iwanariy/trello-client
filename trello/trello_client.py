@@ -15,11 +15,11 @@ class TrelloClient(object):
         self.key = key
         self.token = token
 
-    def fetch_json(self, api, http_method="GET"):
+    def fetch_json(self, api, http_method="GET", params={}):
         """ Get json by using uri """
         uri = base_url + api + "?" + "key={0}&token={1}".format(self.key, self.token)
 
-        r = requests.request(http_method, uri)
+        r = requests.request(http_method, uri, params=params)
 
         return r.json()
 
