@@ -7,11 +7,12 @@ class Card(object):
     Card class in trello
     """
 
-    def __init__(self, client, card_id, name=""):
+    def __init__(self, client, card_id, name="", dateLastActivity=""):
         self.id = card_id
 
         self.client = client
         self.name = name
+        self.dateLastActivity = dateLastActivity
 
     def __repr__(self):
         return self.name
@@ -21,6 +22,7 @@ class Card(object):
         json_obj = self.client.fetch_json("/cards/" + self.id)
 
         self.name = json_obj["name"]
+        self.dateLastActivity = json_obj["dateLastActivity"]
 
     def set_name(self, name):
         self.client.fetch_json("/cards/" + self.id + "/name", "PUT", {"value": name})
