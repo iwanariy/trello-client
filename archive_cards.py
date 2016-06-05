@@ -36,4 +36,5 @@ def archived_cards(board_name="Private", list_name="Done"):
 
 
 if __name__ == u"__main__":
-    archived_cards()
+    archived_cards(board_name="Private", list_name="Done")
+    archived_cards(board_name="Work", list_name="Done")
