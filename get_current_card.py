@@ -10,6 +10,7 @@ CONFIG = "./config.cfg"
 
 
 if __name__ == u"__main__":
+    # Load config
     config = get_config(CONFIG)
     username = config.get("trello", "username")
     key = config.get("trello", "key")
