@@ -28,6 +28,7 @@ class Board(object):
 
         lists = []
         for obj in json_obj:
-            lists.append(List(self.client, obj["id"]))
+            name = obj["name"]
+            lists.append(List(self.client, obj["id"], name=name))
 
         return lists
