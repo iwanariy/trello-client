@@ -18,6 +18,6 @@ class Card(object):
 
     def fetch(self):
         """ Fetch all attributes """
-        json_obj = self.client.get_json("/cards/" + self.id)
+        json_obj = self.client.fetch_json("/cards/" + self.id)
 
         self.name = json_obj["name"]

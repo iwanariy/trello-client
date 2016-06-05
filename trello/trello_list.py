@@ -20,7 +20,7 @@ class List(object):
 
     def fetch(self):
         """ Fetch all attributes """
-        json_obj = self.client.get_json("/lists/" + self.id)
+        json_obj = self.client.fetch_json("/lists/" + self.id)
 
         self.name = json_obj["name"]
         self.closed = json_obj["closed"]
@@ -28,7 +28,7 @@ class List(object):
 
     def get_cards(self):
         """ Get all cards for this list """
-        json_obj = self.client.get_json("/lists/" + self.id + "/cards")
+        json_obj = self.client.fetch_json("/lists/" + self.id + "/cards")
 
         cards = []
         for obj in json_obj:

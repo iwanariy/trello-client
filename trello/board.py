@@ -18,13 +18,13 @@ class Board(object):
 
     def fetch(self):
         """ Fetch all attributes """
-        json_obj = self.client.get_json("/boards/" + self.id)
+        json_obj = self.client.fetch_json("/boards/" + self.id)
 
         self.name = json_obj["name"]
 
     def get_lists(self):
         """ Get card lists of this board """
-        json_obj = self.client.get_json("/boards/" + self.id + "/lists")
+        json_obj = self.client.fetch_json("/boards/" + self.id + "/lists")
 
         lists = []
         for obj in json_obj:

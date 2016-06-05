@@ -15,7 +15,7 @@ class TrelloClient(object):
         self.key = key
         self.token = token
 
-    def get_json(self, api, http_method="GET"):
+    def fetch_json(self, api, http_method="GET"):
         """ Get json by using uri """
         uri = base_url + api + "?" + "key={0}&token={1}".format(self.key, self.token)
 
@@ -28,7 +28,7 @@ def get_boards(username, client):
     """ Get hash of board name and id """
     boards = {}
 
-    json_obj = client.get_json("/members/{0}/boards".format(username))
+    json_obj = client.fetch_json("/members/{0}/boards".format(username))
 
     for record in json_obj:
         id = record["id"]
