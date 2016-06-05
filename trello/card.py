@@ -21,3 +21,7 @@ class Card(object):
         json_obj = self.client.fetch_json("/cards/" + self.id)
 
         self.name = json_obj["name"]
+
+    def set_name(self, name):
+        self.client.fetch_json("/cards/" + self.id + "/name", "PUT", {"value": name})
+        self.name = name
