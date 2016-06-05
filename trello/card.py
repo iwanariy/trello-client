@@ -25,3 +25,7 @@ class Card(object):
     def set_name(self, name):
         self.client.fetch_json("/cards/" + self.id + "/name", "PUT", {"value": name})
         self.name = name
+
+    def set_closed(self, closed):
+        self.client.fetch_json("/cards/" + self.id + "/closed", "PUT", {"value": closed})
+        self.closed = closed
