@@ -24,9 +24,7 @@ if __name__ == u"__main__":
     board = Board(board_id, client)
 
     # Get "Doing" board
-    board.fetch()
     lists = board.get_lists()
-    lists[1].fetch()
 
     # Get current card
     cards = lists[1].get_cards()
