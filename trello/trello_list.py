@@ -32,6 +32,6 @@ class List(object):
 
         cards = []
         for obj in json_obj:
-            cards.append(Card(self.client, obj["id"]))
+            cards.append(Card(self.client, obj["id"], dateLastActivity=obj["dateLastActivity"]))
 
         return cards
