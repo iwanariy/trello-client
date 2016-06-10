@@ -5,6 +5,8 @@
 from trello import TrelloClient, get_boards
 from trello import Board
 from trello import get_config
+import dateutil.parser
+import datetime
 
 CONFIG = "./config.cfg"
 
@@ -26,13 +28,35 @@ def archived_cards(board_name="Private", list_name="Done"):
 
     # Get board
     lists = board.get_lists()
-    try:
-        list_done = [x for x in lists if x.name == list_name][0]
-        cards = list_done.get_cards()
-        for card in cards:
-            card.set_closed("true")
-    except:
-        exit()
+    list_done = [x for x in lists if x.name == list_name][0]
+    cards = list_done.get_cards()
+    target = _get_datetime_str()
+    exit()
+    for card in filter_cards(cards, target):
+        pass
+        # card.set_closed("true")
+
+
+def _get_datetime_str(days=1):
+    """ get datetime, now - days """
+    now = datetime.datetime.utcnow()
+    datetime_yesterday = now - datetime.timedelta(days=1)
+
+    return datetime.datetime.strftime(datetime_yesterday, "%Y-%m-%d %H:%M:%S")
+
+
+def filter_cards(cards, day):
+    """ filter cards """
+    cards_filtered = []
+    print("filter_cards()")
+
+    for card in cards:
+        dateLastActivity_datetime = dateutil.parser.parse(card.dateLastActivity)
+        print(dateLastActivity_datetime)
+        if card.dateLastActivity < day:
+            cards_filtered.append(card)
+
+    return cards_filtered
 
 
 if __name__ == u"__main__":
