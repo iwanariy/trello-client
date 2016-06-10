@@ -9,10 +9,15 @@ Please use [py-trello](https://github.com/sarumont/py-trello) for this purpose.
 
 ## Get Started
 1. Get key and token [here](https://trello.com/1/appKey/generate)
-2. Create config.cfg
-```
-[trello]
-user = ****
-key = *****
-token = *****
-```
+2. Set credential
+  1. Use environment variables
+    * TOKEN_USERNAME
+    * TOKEN_API_KEY
+    * TOKEN_API_TOKEN
+  2. Use config.cfg or set
+  ```
+  [trello]
+  user = ****
+  key = *****
+  token = *****
+  ```
