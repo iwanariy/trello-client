@@ -4,21 +4,15 @@
 
 from trello import TrelloClient, get_boards
 from trello import Board
-from trello import get_config
+import util
 import dateutil.parser
 import datetime
 import pytz
 
-CONFIG = "./config.cfg"
-
 
 def archived_cards(board_name="Private", list_name="Done"):
     """ archive cards """
-    # Load config
-    config = get_config(CONFIG)
-    username = config.get("trello", "username")
-    key = config.get("trello", "key")
-    token = config.get("trello", "token")
+    username, key, token = util.get_credential()
 
     client = TrelloClient(key, token)
 

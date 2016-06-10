@@ -4,17 +4,13 @@
 
 from trello import TrelloClient, get_boards
 from trello import Board
-from trello import get_config
+import util
 
 CONFIG = "./config.cfg"
 
 
 if __name__ == u"__main__":
-    # Load config
-    config = get_config(CONFIG)
-    username = config.get("trello", "username")
-    key = config.get("trello", "key")
-    token = config.get("trello", "token")
+    username, key, token = util.get_credential()
 
     client = TrelloClient(key, token)
 
