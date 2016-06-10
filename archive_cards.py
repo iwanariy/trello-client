@@ -34,11 +34,11 @@ def archived_cards(board_name="Private", list_name="Done"):
 
     target = datetime.datetime.now(pytz.utc) - datetime.timedelta(days=1)
 
-    for card in filter_cards(cards, target):
+    for card in _filter_cards(cards, target):
         card.set_closed("true")
 
 
-def filter_cards(cards, day):
+def _filter_cards(cards, day):
     """ filter cards """
     cards_filtered = []
 
