@@ -7,6 +7,7 @@ from trello import Board
 from trello import get_config
 import dateutil.parser
 import datetime
+import pytz
 
 CONFIG = "./config.cfg"
 
@@ -30,19 +31,11 @@ def archived_cards(board_name="Private", list_name="Done"):
     lists = board.get_lists()
     list_done = [x for x in lists if x.name == list_name][0]
     cards = list_done.get_cards()
-    target = _get_datetime_str()
-    exit()
+
+    target = datetime.datetime.now(pytz.utc) - datetime.timedelta(days=1)
+
     for card in filter_cards(cards, target):
-        pass
-        # card.set_closed("true")
-
-
-def _get_datetime_str(days=1):
-    """ get datetime, now - days """
-    now = datetime.datetime.utcnow()
-    datetime_yesterday = now - datetime.timedelta(days=1)
-
-    return datetime.datetime.strftime(datetime_yesterday, "%Y-%m-%d %H:%M:%S")
+        card.set_closed("true")
 
 
 def filter_cards(cards, day):
