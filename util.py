@@ -19,4 +19,4 @@ def get_credential():
 
 
 if __name__ == u"__main__":
-    pass
+    print(get_credential())
