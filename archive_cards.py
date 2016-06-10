@@ -48,12 +48,10 @@ def _get_datetime_str(days=1):
 def filter_cards(cards, day):
     """ filter cards """
     cards_filtered = []
-    print("filter_cards()")
 
     for card in cards:
         dateLastActivity_datetime = dateutil.parser.parse(card.dateLastActivity)
-        print(dateLastActivity_datetime)
-        if card.dateLastActivity < day:
+        if dateLastActivity_datetime < day:
             cards_filtered.append(card)
 
     return cards_filtered
