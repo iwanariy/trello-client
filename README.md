@@ -14,7 +14,7 @@ Please use [py-trello](https://github.com/sarumont/py-trello) for this purpose.
     * TOKEN_USERNAME
     * TOKEN_API_KEY
     * TOKEN_API_TOKEN
-  2. Use config.cfg or set
+  2. Use config.cfg
   ```
   [trello]
   user = ****
