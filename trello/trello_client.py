@@ -5,6 +5,8 @@
 base_url = "https://api.trello.com/1"
 
 import requests
+import sys
+from requests.exceptions import ConnectionError
 
 
 class TrelloClient(object):
@@ -19,7 +21,11 @@ class TrelloClient(object):
         """ Get json by using uri """
         uri = base_url + api + "?" + "key={0}&token={1}".format(self.key, self.token)
 
-        r = requests.request(http_method, uri, params=params)
+        try:
+            r = requests.request(http_method, uri, params=params)
+        except ConnectionError:
+            print("[ERROR]\tConnection Error.")
+            sys.exit(1)
 
         return r.json()
 
