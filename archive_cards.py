@@ -10,7 +10,7 @@ import datetime
 import pytz
 
 
-def archived_cards(board_name="Private", list_name="Done"):
+def archived_cards(board_name="Private", list_name="Done", days=1):
     """ archive cards """
     username, key, token = util.get_credential()
 
@@ -26,7 +26,7 @@ def archived_cards(board_name="Private", list_name="Done"):
     list_done = [x for x in lists if x.name == list_name][0]
     cards = list_done.get_cards()
 
-    target = datetime.datetime.now(pytz.utc) - datetime.timedelta(days=1)
+    target = datetime.datetime.now(pytz.utc) - datetime.timedelta(days=days)
 
     for card in _filter_cards(cards, target):
         card.set_closed("true")
@@ -45,5 +45,5 @@ def _filter_cards(cards, day):
 
 
 if __name__ == u"__main__":
-    archived_cards(board_name="Private", list_name="Done")
-    archived_cards(board_name="Work", list_name="Done")
+    archived_cards(board_name="Private", list_name="Done", days=1)
+    archived_cards(board_name="Work", list_name="Done", days=1)
