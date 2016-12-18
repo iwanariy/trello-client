@@ -45,5 +45,11 @@ def _filter_cards(cards, day):
     return cards_filtered
 
 
+def lambda_handler(event, context):
+    archive_cards(board_name="Private", list_name="Done", days=1)
+
+    return True
+
+
 if __name__ == u"__main__":
     archive_cards(board_name="Private", list_name="Done", days=1)
