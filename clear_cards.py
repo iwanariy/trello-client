@@ -5,6 +5,7 @@
 from __future__ import print_function
 from trello import TrelloClient, get_boards
 from trello import Board
+import os
 import util
 import dateutil.parser
 import datetime
@@ -46,7 +47,7 @@ def _filter_cards(cards, day):
 
 
 def lambda_handler(event, context):
-    archive_cards(board_name="Private", list_name="Done", days=1)
+    archive_cards(board_name="Private", list_name="Done", days=os.getenv("DAYS", 1))
 
     return True
 
