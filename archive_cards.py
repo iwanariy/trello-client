@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 
+from __future__ import print_function
 from trello import TrelloClient, get_boards
 from trello import Board
 import util
