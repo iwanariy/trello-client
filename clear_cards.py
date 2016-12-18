@@ -13,7 +13,7 @@ import pytz
 import logging
 
 
-DAYS = os.getenv("DAYS", 1)
+DAYS = int(os.getenv("DAYS", 1))
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 
