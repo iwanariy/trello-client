@@ -95,3 +95,4 @@ ENV/
 # Original
 config.cfg
 sample.py
+Makefile
