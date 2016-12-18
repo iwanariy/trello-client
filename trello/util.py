@@ -2,7 +2,10 @@
 # -*- coding: utf-8 -*-
 
 
-import configparser
+try:
+    import configparser
+except:
+    import ConfigParser as configparser
 import sys
 
 

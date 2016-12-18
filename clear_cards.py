@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 
+from __future__ import print_function
 from trello import TrelloClient, get_boards
 from trello import Board
 import util
@@ -42,6 +43,12 @@ def _filter_cards(cards, day):
             cards_filtered.append(card)
 
     return cards_filtered
+
+
+def lambda_handler(event, context):
+    archive_cards(board_name="Private", list_name="Done", days=1)
+
+    return True
 
 
 if __name__ == u"__main__":
