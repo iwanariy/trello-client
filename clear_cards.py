@@ -10,6 +10,12 @@ import util
 import dateutil.parser
 import datetime
 import pytz
+import logging
+
+
+DAYS = os.getenv("DAYS", 1)
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
 
 
 def archive_cards(board_name="Private", list_name="Done", days=1):
@@ -32,6 +38,7 @@ def archive_cards(board_name="Private", list_name="Done", days=1):
 
     for card in _filter_cards(cards, target):
         card.set_closed("true")
+        logger.debug(card)
 
 
 def _filter_cards(cards, day):
@@ -47,10 +54,10 @@ def _filter_cards(cards, day):
 
 
 def lambda_handler(event, context):
-    archive_cards(board_name="Private", list_name="Done", days=os.getenv("DAYS", 1))
+    archive_cards(board_name="Private", list_name="Done", days=DAYS)
 
     return True
 
 
 if __name__ == u"__main__":
-    archive_cards(board_name="Private", list_name="Done", days=1)
+    archive_cards(board_name="Private", list_name="Done", days=DAYS)
